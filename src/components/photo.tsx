@@ -21,12 +21,12 @@ function Photo() {
           }}
           className='absolute w-[18.625rem] h-[18.625rem] xl:w-[31.125rem] xl:h-[31.125rem] mix-blend-lighten'>
           <Image
-            src="/assets/profile-square.jpg"
+            src="/assets/profile.png"
             layout='fill'
             priority
             quality={100}
             alt=""
-            className='object-contain rounded-full' />
+            className='object-contain rounded-full mix-blend-multiply' />
         </motion.div>
         {/* circle */}
         <motion.svg

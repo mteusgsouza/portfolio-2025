@@ -1,5 +1,6 @@
 import Photo from '@/components/photo';
 import Social from '@/components/social';
+import Stats from '@/components/stats';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import moment from 'moment';
@@ -38,6 +39,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Stats />
       {/* <ModeToggle/> */}
     </div>
   );
