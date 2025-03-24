@@ -19,7 +19,7 @@ function Photo() {
             opacity: 1,
             transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' }
           }}
-          className='absolute w-[18.625rem] h-[18.625rem] xl:w-[31.125rem] xl:h-[31.125rem] mix-blend-lighten'>
+          className='absolute w-[16rem] h-[16rem] xl:w-[28rem] xl:h-[28rem] mix-blend-lighten'>
           <Image
             src="/assets/profile.png"
             layout='fill'
@@ -30,7 +30,7 @@ function Photo() {
         </motion.div>
         {/* circle */}
         <motion.svg
-          className="w-[18.75rem] h-[18.75rem] xl:w-[31.625rem] xl:h-[31.625rem]"
+          className="w-[16rem] h-[16rem] xl:w-[28rem] xl:h-[28rem]"
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"

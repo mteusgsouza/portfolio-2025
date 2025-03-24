@@ -1,6 +1,6 @@
 import Photo from '@/components/photo';
+import Skills from '@/components/skills';
 import Social from '@/components/social';
-import Stats from '@/components/stats';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import moment from 'moment';
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="h-full">
       <div className="container">
-        <div className="flex flex-col xl:flex-row justify-between items-center xl:pt-8 xl:pb-24">
+        <div className="flex flex-col xl:flex-row justify-between items-center xl:pt-8 xl:pb-20">
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className='text-xl'>Font-end Developer</span>
             <h1 className="h1 mb-6">
@@ -39,7 +39,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Stats />
+      <Skills />
+      {/* <Stats /> */}
       {/* <ModeToggle/> */}
     </div>
   );

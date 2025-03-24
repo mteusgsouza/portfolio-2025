@@ -9,25 +9,25 @@ const services = [
     num: '01',
     title: 'Web Development',
     link: '',
-    description: 'I can help you build a website from scratch or improve your existing one.'
+    description: 'I specialize in building websites using modern technologies and frameworks like React, Next.js, TailwindCSS and Material-UI.'
   },
   {
     num: '02',
     title: 'Mobile Development',
     link: '',
-    description: 'I can help you build a mobile app from scratch or improve your existing one.'
+    description: 'I have experience building mobile apps using React Native and Expo, which allows me to build cross-platform apps for both iOS and Android.'
   },
   {
     num: '03',
     title: 'UI/UX Design',
     link: '',
-    description: 'I can help you design a beautiful and user-friendly interface for your website or app.'
+    description: 'I like to design clean and modern user interfaces that are easy to use and visually appealing.'
   },
   {
     num: '04',
     title: 'SEO Optimization',
     link: '',
-    description: 'I can help you improve your website\'s search engine ranking and visibility.'
+    description: 'I understand the importance of SEO and can help you optimize your website to rank higher on search engines.' 
   }
 ]
 
