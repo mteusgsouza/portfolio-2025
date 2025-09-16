@@ -37,7 +37,7 @@ function Skills() {
         className="container mx-auto">
         <h2 className='text-3xl font-bold mb-5 text-center'>Skills</h2>
         <div className='border-b border-white/50 w-20 mx-auto mb-8'></div>
-        <div className="flex flex-wrap gap-4 mx-auto justify-center">
+        <div className="flex flex-wrap gap-1.5 xl:gap-4 mx-auto justify-center">
           {skillsData.map((skill, index) => (
             <motion.div key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,7 @@ function Skills() {
                 transition: { delay: 2.6 + (index + 1) * 0.1, duration: 0.4, ease: 'easeInOut' }
               }}
             >
-              <Badge className='text-base lg:text-lg'>{skill}</Badge>
+              <Badge className='text-base xl:text-lg'>{skill}</Badge>
             </motion.div>
           ))}
         </div>
