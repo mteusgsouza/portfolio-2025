@@ -7,7 +7,7 @@ import moment from 'moment';
 import { FiDownload } from 'react-icons/fi';
 
 export default function Home() {
- 
+
   return (
     <div className="h-full">
       <div className="container">
@@ -21,10 +21,12 @@ export default function Home() {
               I'm a front-end developer with {moment().diff(moment('2019-11-19'), 'years')} years of professional experience. I specialize in building websites and web applications with modern technologies like React, Next.js, and Tailwind CSS.
             </p>
             <div className='flex flex-col xl:flex-row items-center gap-8'>
-              <Button variant="outline" size="lg" className='uppercase flex items-center gap-2'>
-                <span>Download CV</span>
-                <FiDownload className='text-xl'/>
-              </Button>
+              <a href="/files/Curriculo Mateus Gonçalves de Souza.pdf" target='_blank' rel='noopener noreferrer' download>
+                <Button variant="outline" size="lg" className='uppercase flex items-center gap-2'>
+                  <span>Download CV</span>
+                  <FiDownload className='text-xl' />
+                </Button>
+              </a>
               <div className='mb-8 xl:mb-0'>
                 <div className={cn('flex gap-6',
                   '[&_a]:w-9 [&_a]:h-9 [&_a]:border [&_a]:border-accent [&_a]:rounded-full [&_a]:flex [&_a]:justify-center [&_a]:items-center [&_a]:text-accent [&_a]:text-base [&_a]:hover:bg-accent [&_a]:hover:text-primary [&_a]:hover:transiion-all [&_a]:duration-500'
@@ -32,7 +34,7 @@ export default function Home() {
                   <Social />
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
           <div className='order-1 xl:order-none mb-8 xl:mb-0'>
             <Photo />

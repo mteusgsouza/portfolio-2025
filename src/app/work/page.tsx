@@ -5,9 +5,7 @@ export const metadata: Metadata = {
 }
 
 function WorkPage() {
-  return (
-    <div>WorkPage</div>
-  )
+  return <div>WorkPage</div>
 }
 
 export default WorkPage

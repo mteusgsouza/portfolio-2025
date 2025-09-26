@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
 
@@ -125,31 +125,38 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-primary font-primary text-white leading-loose;
+    @apply bg-primary font-primary leading-loose text-white;
   }
   .h1 {
-    @apply text-5xl xl:text-7xl leading-[1.1] font-semibold;
+    @apply text-5xl leading-[1.1] font-semibold xl:text-7xl;
   }
   .h2 {
-    @apply text-4xl xl:text-5xl leading-[1.1] font-semibold;
+    @apply text-4xl leading-[1.1] font-semibold xl:text-5xl;
   }
   .h3 {
-    @apply text-xl xl:text-2xl leading-[1.1] font-semibold;
+    @apply text-xl leading-[1.1] font-semibold xl:text-2xl;
   }
-  
+
   .text-outline {
     -webkit-text-stroke: 1px var(--color-foreground);
   }
-  
+
   .text-outline-hover {
     -webkit-text-stroke: 1px var(--color-accent);
   }
-  
 }
 
-@layer components{
+@layer components {
   .container {
     @apply mx-auto px-4 xl:!max-w-[75rem];
   }
 }
 
+form {
+  input {
+    @apply border-white/50 bg-white/5 placeholder:text-white/60 focus:border-white/70 active:border-white/70;
+  }
+  textarea {
+    @apply border-white/50 bg-white/5 placeholder:text-white/60 focus:border-white/70 active:border-white/70;
+  }
+}
