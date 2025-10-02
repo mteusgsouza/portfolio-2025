@@ -7,9 +7,8 @@ interface EmailTemplateProps {
 export function EmailTemplate({ name, email, message }: EmailTemplateProps) {
   return (
     <div>
-      <h1>Welcome, {name}!</h1>
+      <h1>Got a message from: {name}</h1>
       <div>
-        Message:
         <blockquote>{message}</blockquote>
       </div>
       email: <a href={`mailto:${email}`}>{email} </a>

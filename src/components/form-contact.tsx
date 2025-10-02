@@ -39,8 +39,18 @@ export default function FormContact() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
-    toast('Message sent successfully!', { type: 'success' } as any)
-    form.reset()
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    })
+      .then(() => {
+        toast('Message sent successfully!', { type: 'success' } as any)
+        form.reset()
+      })
+      .catch(() => {
+        toast('Something went wrong.', { type: 'error' } as any)
+      })
   }
 
   return (
