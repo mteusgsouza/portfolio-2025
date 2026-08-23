@@ -78,18 +78,20 @@ export const projects: Project[] = [
   },
   {
     num: '02',
-    category: 'Web App',
+    category: 'PWA',
     title: 'Projeto Fitness',
-    // TODO: expand once the repo details are available (it is private, so the
-    // notes below cover only what the deployed app exposes publicly).
     description:
-      'Workout tracking app. The whole application sits behind authentication, so members sign in to manage their training routine.',
+      'Mobile-first PWA for tracking gym workouts. Each member keeps one workout sheet per weekday, adjusts it as the training evolves, and compares load, repetitions and difficulty across sessions, with frequency and progress charts on the home screen.',
     highlights: [
-      'Authentication and route protection with Clerk: every application route is gated by middleware, with dedicated sign-in and sign-up pages as the only public entry points.',
-      'Next.js App Router application deployed on Vercel.',
+      'Installable mobile-first PWA, designed to be used on the phone during the workout itself rather than filled in afterwards.',
+      'One workout sheet per weekday, edited over time so the routine evolves alongside the training instead of being rebuilt from scratch.',
+      'Per-exercise progression tracking: load, repetitions and perceived difficulty are recorded every session and compared against the previous ones.',
+      'Home dashboard with frequency and progress charts built from the session history.',
+      'Authentication and route protection with Clerk — every application route is gated by middleware, with sign-in and sign-up as the only public entry points.',
     ],
+    // TODO: add database, ORM and charting library once confirmed.
     stack: [
-      { label: 'Front', items: ['Next.js', 'React'] },
+      { label: 'Front', items: ['Next.js', 'React', 'PWA'] },
       { label: 'Auth', items: ['Clerk'] },
       { label: 'Infra', items: ['Vercel'] },
     ],
