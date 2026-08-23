@@ -38,7 +38,6 @@ export default function FormContact() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
