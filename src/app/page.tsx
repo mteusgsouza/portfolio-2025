@@ -3,7 +3,7 @@ import Skills from '@/components/skills';
 import Social from '@/components/social';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import moment from 'moment';
+import { getYearsOfExperience } from '@/lib/experience';
 import { getTranslations } from 'next-intl/server';
 import { FiDownload } from 'react-icons/fi';
 
@@ -20,7 +20,7 @@ export default async function Home() {
               {t('greeting')} <br /> <span className="text-accent">Mateus Souza</span>
             </h1>
             <p className="max-w-[31.25rem] mb-9 text-white/80">
-              {t('intro', { years: moment().diff(moment('2019-11-19'), 'years') })}
+              {t('intro', { years: getYearsOfExperience() })}
             </p>
             <div className='flex flex-col xl:flex-row items-center gap-8'>
               <a href="/files/Curriculo Mateus Gonçalves de Souza.pdf" target='_blank' rel='noopener noreferrer' download>

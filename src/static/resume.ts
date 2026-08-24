@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/locale'
+import { getYearsOfExperience } from '@/lib/experience'
 
 type EntryTranslation = {
   title: string
@@ -32,22 +33,26 @@ export const profileTranslations: Record<Locale, { role: string; summary: string
   en: {
     role: 'Senior Web Developer',
     summary:
-      'Front-end developer with over 5 years of experience building modern, responsive interfaces. Specialized in React.js, Next.js and TypeScript, with extensive experience in styling tools like Tailwind CSS and MUI. Passionate about creating intuitive, high-performance solutions that improve the user experience.',
+      'Front-end developer with over {years} years of experience building modern, responsive interfaces. Specialized in React.js, Next.js and TypeScript, with extensive experience in styling tools like Tailwind CSS and MUI. Passionate about creating intuitive, high-performance solutions that improve the user experience.',
   },
   pt: {
     role: 'Desenvolvedor Web Sênior',
     summary:
-      'Desenvolvedor front-end com mais de 5 anos de experiência na construção de interfaces modernas e responsivas. Especializado em React.js, Next.js e TypeScript, com ampla experiência em ferramentas de estilização como Tailwind CSS e MUI. Apaixonado por criar soluções intuitivas e de alta performance que melhoram a experiência do usuário.',
+      'Desenvolvedor front-end com mais de {years} anos de experiência na construção de interfaces modernas e responsivas. Especializado em React.js, Next.js e TypeScript, com ampla experiência em ferramentas de estilização como Tailwind CSS e MUI. Apaixonado por criar soluções intuitivas e de alta performance que melhoram a experiência do usuário.',
   },
   ja: {
     role: 'シニアWebデベロッパー',
     summary:
-      'モダンでレスポンシブなインターフェース構築に5年以上携わってきたフロントエンドエンジニアです。React.js、Next.js、TypeScriptを専門とし、Tailwind CSSやMUIといったスタイリングツールにも豊富な経験があります。ユーザー体験を向上させる直感的で高性能なソリューションの構築に情熱を持っています。',
+      'モダンでレスポンシブなインターフェース構築に{years}年以上携わってきたフロントエンドエンジニアです。React.js、Next.js、TypeScriptを専門とし、Tailwind CSSやMUIといったスタイリングツールにも豊富な経験があります。ユーザー体験を向上させる直感的で高性能なソリューションの構築に情熱を持っています。',
   },
 }
 
 export function localizeProfile(locale: Locale) {
-  return profileTranslations[locale]
+  const profile = profileTranslations[locale]
+  return {
+    role: profile.role,
+    summary: profile.summary.replace('{years}', String(getYearsOfExperience())),
+  }
 }
 
 export const experience: ResumeEntry[] = [

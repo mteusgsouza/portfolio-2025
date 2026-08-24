@@ -1,10 +1,11 @@
 'use client'
 import { cn } from '@/lib/utils'
+import { getYearsOfExperience } from '@/lib/experience'
 import CountUp from 'react-countup'
 
 function Stats() {
   const _status = [
-    { num: 5, text: 'Years of experience' },
+    { num: getYearsOfExperience(), text: 'Years of experience' },
     { num: 25, text: 'Projects completed' },
     { num: 8, text: 'Tecnologies mastered' },
     { num: 500, text: 'Code commits' },
