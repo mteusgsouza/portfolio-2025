@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import Skills from '@/components/skills'
+import { Furigana } from '@/components/furigana'
 import { isLocale, defaultLocale } from '@/i18n/locale'
 import {
   education,
@@ -33,7 +34,18 @@ async function ResumePage() {
           <div>
             <span className="text-xl">{profile.role}</span>
             <h1 className="h1 mb-4">
-              Mateus <span className="text-accent">Souza</span>
+              {locale === 'ja' ? (
+                <>
+                  <Furigana word="Mateus" />{' '}
+                  <span className="text-accent">
+                    <Furigana word="Souza" />
+                  </span>
+                </>
+              ) : (
+                <>
+                  Mateus <span className="text-accent">Souza</span>
+                </>
+              )}
             </h1>
             <p className="max-w-[45rem] text-white/80">{profile.summary}</p>
           </div>

@@ -3,12 +3,15 @@ import Skills from '@/components/skills';
 import Social from '@/components/social';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Furigana } from '@/components/furigana';
 import { getYearsOfExperience } from '@/lib/experience';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { FiDownload } from 'react-icons/fi';
 
 export default async function Home() {
   const t = await getTranslations('home');
+  const locale = await getLocale();
+  const isJa = locale === 'ja';
 
   return (
     <div className="h-full">
@@ -17,7 +20,14 @@ export default async function Home() {
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className='text-xl'>{t('role')}</span>
             <h1 className="h1 mb-6">
-              {t('greeting')} <br /> <span className="text-accent">Mateus Souza</span>
+              {t('greeting')} <br />
+              {isJa ? (
+                <span className="text-accent">
+                  <Furigana word="Mateus" /> <Furigana word="Souza" />
+                </span>
+              ) : (
+                <span className="text-accent">Mateus Souza</span>
+              )}
             </h1>
             <p className="max-w-[31.25rem] mb-9 text-white/80">
               {t('intro', { years: getYearsOfExperience() })}
