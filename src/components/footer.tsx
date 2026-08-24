@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import Social from './social'
 import { cn } from '@/lib/utils'
+import { getTranslations } from 'next-intl/server'
 
-function Footer() {
+async function Footer() {
+  const t = await getTranslations('footer')
   return (
     <footer className="py-8 text-white">
       <div className="container">
@@ -31,7 +33,7 @@ function Footer() {
         </div>
 
         <p className="mt-8 text-center text-xs text-white/50">
-          © {new Date().getFullYear()} Mateus Souza. Todos os direitos reservados.
+          © {new Date().getFullYear()} Mateus Souza. {t('rights')}
         </p>
       </div>
     </footer>

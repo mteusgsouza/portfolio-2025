@@ -1,14 +1,31 @@
 import { Button } from '@/components/ui/button'
 import Skills from '@/components/skills'
-import { education, experience, languages, profile } from '@/static/resume'
+import { isLocale, defaultLocale } from '@/i18n/locale'
+import {
+  education,
+  experience,
+  languages,
+  localizeEntry,
+  localizeLanguage,
+  localizeProfile,
+} from '@/static/resume'
 import { Metadata } from 'next'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { FiDownload } from 'react-icons/fi'
 
-export const metadata: Metadata = {
-  title: 'Resume',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('resume')
+  return {
+    title: t('metaTitle'),
+  }
 }
 
-function ResumePage() {
+async function ResumePage() {
+  const t = await getTranslations('resume')
+  const rawLocale = await getLocale()
+  const locale = isLocale(rawLocale) ? rawLocale : defaultLocale
+  const profile = localizeProfile(locale)
+
   return (
     <section className="py-12 xl:py-0">
       <div className="container">
@@ -28,7 +45,7 @@ function ResumePage() {
             className="shrink-0"
           >
             <Button variant="outline" size="lg" className="uppercase flex items-center gap-2">
-              <span>Download PDF</span>
+              <span>{t('downloadPdf')}</span>
               <FiDownload className="text-xl" />
             </Button>
           </a>
@@ -36,56 +53,65 @@ function ResumePage() {
 
         <div className="grid gap-12 xl:grid-cols-2 mb-12">
           <div>
-            <h2 className="text-2xl font-bold mb-4">Experience</h2>
+            <h2 className="text-2xl font-bold mb-4">{t('experience')}</h2>
             <div className="border-b border-white/50 w-16 mb-8"></div>
             <div className="space-y-8">
-              {experience.map((item, index) => (
-                <div key={index}>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="text-accent text-sm mb-2">
-                    {item.place} • {item.period}
-                  </p>
-                  <ul className="space-y-1 text-sm text-white/80 list-disc list-inside">
-                    {item.bullets.map((bullet, bulletIndex) => (
-                      <li key={bulletIndex}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {experience.map((entry, index) => {
+                const item = localizeEntry(entry, locale)
+                return (
+                  <div key={index}>
+                    <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <p className="text-accent text-sm mb-2">
+                      {item.place} • {item.period}
+                    </p>
+                    <ul className="space-y-1 text-sm text-white/80 list-disc list-inside">
+                      {item.bullets.map((bullet, bulletIndex) => (
+                        <li key={bulletIndex}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-4">Education</h2>
+            <h2 className="text-2xl font-bold mb-4">{t('education')}</h2>
             <div className="border-b border-white/50 w-16 mb-8"></div>
             <div className="space-y-8">
-              {education.map((item, index) => (
-                <div key={index}>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="text-accent text-sm mb-2">
-                    {item.place} • {item.period}
-                  </p>
-                  <ul className="space-y-1 text-sm text-white/80 list-disc list-inside">
-                    {item.bullets.map((bullet, bulletIndex) => (
-                      <li key={bulletIndex}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {education.map((entry, index) => {
+                const item = localizeEntry(entry, locale)
+                return (
+                  <div key={index}>
+                    <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <p className="text-accent text-sm mb-2">
+                      {item.place} • {item.period}
+                    </p>
+                    <ul className="space-y-1 text-sm text-white/80 list-disc list-inside">
+                      {item.bullets.map((bullet, bulletIndex) => (
+                        <li key={bulletIndex}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
 
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 text-center">Languages</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center">{t('languages')}</h2>
           <div className="border-b border-white/50 w-16 mx-auto mb-8"></div>
           <div className="flex flex-wrap justify-center gap-8">
-            {languages.map((language, index) => (
-              <div key={index} className="text-center">
-                <p className="font-semibold">{language.name}</p>
-                <p className="text-sm text-white/80">{language.level}</p>
-              </div>
-            ))}
+            {languages.map((language, index) => {
+              const item = localizeLanguage(language, locale)
+              return (
+                <div key={index} className="text-center">
+                  <p className="font-semibold">{item.name}</p>
+                  <p className="text-sm text-white/80">{item.level}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

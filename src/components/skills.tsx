@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { Badge } from './ui/badge'
 
 export const skillsData = [
@@ -26,6 +27,7 @@ export const skillsData = [
 
 
 function Skills() {
+  const t = useTranslations('skills')
   return (
     <section className='pt-4 pb-12 xl:py-0'>
       <motion.div
@@ -35,7 +37,7 @@ function Skills() {
           transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' }
         }}
         className="container mx-auto">
-        <h2 className='text-3xl font-bold mb-5 text-center'>Skills</h2>
+        <h2 className='text-3xl font-bold mb-5 text-center'>{t('title')}</h2>
         <div className='border-b border-white/50 w-20 mx-auto mb-8'></div>
         <div className="flex flex-wrap gap-1.5 xl:gap-4 mx-auto justify-center">
           {skillsData.map((skill, index) => (

@@ -1,9 +1,11 @@
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Nav from './nav';
 import { Button } from './ui/button';
 import MobileNav from './ui/mobile-nav';
 
-function Header() {
+async function Header() {
+  const t = await getTranslations('header');
   return (
     <header className="py-8 xl:py-12 text-white relative">
       <div className="container max-auto justify-between items-center flex">
@@ -18,7 +20,7 @@ function Header() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Button>Hire me</Button>
+            <Button>{t('hireMe')}</Button>
           </a>
         </div>
         <div className="xl:hidden">

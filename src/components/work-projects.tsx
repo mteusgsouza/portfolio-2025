@@ -7,14 +7,17 @@ import {
 } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { ProjectLightbox } from '@/components/project-lightbox'
-import { projects, type Project } from '@/static/projects'
+import type { Locale } from '@/i18n/locale'
+import { localizeProject, projects, type LocalizedProject } from '@/static/projects'
 import { motion } from 'framer-motion'
+import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { BsArrowUpRight, BsCheck2, BsGithub, BsZoomIn } from 'react-icons/bs'
 
-function ProjectPreview({ project }: { project: Project }) {
+function ProjectPreview({ project }: { project: LocalizedProject }) {
+  const t = useTranslations('work')
   const [showImage, setShowImage] = useState(Boolean(project.image))
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -34,7 +37,7 @@ function ProjectPreview({ project }: { project: Project }) {
             setLightboxOpen(true)
           }}
           className="group/preview relative block h-full w-full cursor-zoom-in"
-          aria-label={`View ${project.title} screenshots`}
+          aria-label={t('viewScreenshotsAria', { title: project.title })}
         >
           <Image
             src={project.image}
@@ -47,7 +50,9 @@ function ProjectPreview({ project }: { project: Project }) {
           <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/preview:bg-black/40 group-hover/preview:opacity-100">
             <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
               <BsZoomIn className="text-base" />
-              {gallery.length > 1 ? `View ${gallery.length} screenshots` : 'View screenshot'}
+              {gallery.length > 1
+                ? t('viewScreenshots', { count: gallery.length })
+                : t('viewScreenshot')}
             </span>
           </div>
         </button>
@@ -76,7 +81,14 @@ function ProjectPreview({ project }: { project: Project }) {
   )
 }
 
-function ProjectItem({ project, index }: { project: Project; index: number }) {
+function ProjectItem({
+  project,
+  index,
+}: {
+  project: LocalizedProject
+  index: number
+}) {
+  const t = useTranslations('work')
   const techCount = project.stack.reduce(
     (total, group) => total + group.items.length,
     0
@@ -118,7 +130,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
           <AccordionItem value={`${project.num}-highlights`}>
             <AccordionTrigger>
               <span className="flex items-center gap-2">
-                Technical highlights
+                {t('technicalHighlights')}
                 <span className="text-xs text-white/50">
                   ({project.highlights.length})
                 </span>
@@ -141,7 +153,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
           <AccordionItem value={`${project.num}-stack`}>
             <AccordionTrigger>
               <span className="flex items-center gap-2">
-                Tech stack
+                {t('techStack')}
                 <span className="text-xs text-white/50">({techCount})</span>
               </span>
             </AccordionTrigger>
@@ -175,7 +187,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
               rel="noopener noreferrer"
               className="text-accent hover:text-accent-hover group/link inline-flex items-center gap-2 text-sm font-medium transition-colors"
             >
-              Live site
+              {t('liveSite')}
               <BsArrowUpRight className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
             </Link>
           )}
@@ -187,7 +199,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
               className="hover:text-accent inline-flex items-center gap-2 text-sm font-medium text-white/70 transition-colors"
             >
               <BsGithub className="text-base" />
-              Source code
+              {t('sourceCode')}
             </Link>
           )}
         </div>
@@ -197,10 +209,15 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
 }
 
 function WorkProjects() {
+  const locale = useLocale() as Locale
   return (
     <div className="flex flex-col gap-10">
       {projects.map((project, index) => (
-        <ProjectItem key={project.num} project={project} index={index} />
+        <ProjectItem
+          key={project.num}
+          project={localizeProject(project, locale)}
+          index={index}
+        />
       ))}
     </div>
   )

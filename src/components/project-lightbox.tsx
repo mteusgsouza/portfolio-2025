@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useCallback, useEffect } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
@@ -24,6 +25,7 @@ export function ProjectLightbox({
   open,
   onOpenChange,
 }: ProjectLightboxProps) {
+  const t = useTranslations('work')
   const goTo = useCallback(
     (next: number) => onIndexChange((next + images.length) % images.length),
     [images.length, onIndexChange]
@@ -54,7 +56,7 @@ export function ProjectLightbox({
           </DialogPrimitive.Title>
           <DialogPrimitive.Close className="text-accent absolute top-4 right-4 outline-none sm:top-8 sm:right-8">
             <IoMdClose className="text-3xl" />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">{t('close')}</span>
           </DialogPrimitive.Close>
 
           <div className="relative flex w-full max-w-5xl flex-1 items-center justify-center">
@@ -63,7 +65,7 @@ export function ProjectLightbox({
                 type="button"
                 onClick={() => goTo(index - 1)}
                 className="absolute left-0 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20 sm:-left-12"
-                aria-label="Previous image"
+                aria-label={t('previousImage')}
               >
                 <BsChevronLeft className="text-xl" />
               </button>
@@ -83,7 +85,7 @@ export function ProjectLightbox({
                 type="button"
                 onClick={() => goTo(index + 1)}
                 className="absolute right-0 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20 sm:-right-12"
-                aria-label="Next image"
+                aria-label={t('nextImage')}
               >
                 <BsChevronRight className="text-xl" />
               </button>

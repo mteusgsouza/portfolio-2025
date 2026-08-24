@@ -1,10 +1,12 @@
 import { cn } from '@/lib/utils'
 import { links } from '@/static/menu-links'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { CiMenuFries } from 'react-icons/ci'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './sheet'
 
 function MobileNav() {
+  const t = useTranslations('nav')
   return (
     <Sheet>
       <SheetTrigger className='flex justify-center items-center'>
@@ -21,15 +23,15 @@ function MobileNav() {
           </SheetTitle>
         </SheetHeader>
         <nav className='flex flex-col justify-center items-center gap-8'>
-          {links.map((link, index) => (
+          {links.map((link) => (
             <Link
-              key={index}
+              key={link.key}
               href={link.path}
               className={cn('capitalize font-medium hover:text-accent transition-all border-b-2 border-transparent',
                 // pathname === link.path && 'text-accent border-accent',
               )}
             >
-              {link.name}
+              {t(link.key)}
             </Link>
           ))}
         </nav>

@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "início",
+    "services": "serviços",
+    "resume": "currículo",
+    "work": "projetos",
+    "contact": "contato"
+  },
+  "header": {
+    "hireMe": "Contrate-me"
+  },
+  "home": {
+    "role": "Desenvolvedor Front-end",
+    "greeting": "Olá, eu sou",
+    "intro": "Sou desenvolvedor front-end com {years} anos de experiência profissional. Sou especializado em criar sites e aplicações web com tecnologias modernas como React, Next.js e Tailwind CSS.",
+    "downloadCv": "Baixar currículo"
+  },
+  "skills": {
+    "title": "Habilidades"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
+  },
+  "contact": {
+    "metaTitle": "Contato",
+    "title": "Contato",
+    "viaEmail": "Você pode entrar em contato comigo através do email:",
+    "viaPhone": "Ou através do meu telefone:"
+  },
+  "form": {
+    "nameLabel": "Nome",
+    "namePlaceholder": "João da Silva",
+    "nameError": "O nome deve ter pelo menos 2 caracteres.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "joao@exemplo.com",
+    "emailError": "O email deve ter pelo menos 2 caracteres.",
+    "messageLabel": "Mensagem",
+    "messagePlaceholder": "Digite sua mensagem aqui",
+    "messageError": "A mensagem deve ter pelo menos 2 caracteres.",
+    "submit": "Enviar",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Algo deu errado."
+  },
+  "services": {
+    "metaTitle": "Serviços"
+  },
+  "work": {
+    "metaTitle": "Projetos",
+    "title": "Projetos",
+    "subtitle": "Uma seleção dos projetos que já construí. Expanda cada card para ver as decisões técnicas por trás dele e o stack completo.",
+    "technicalHighlights": "Destaques técnicos",
+    "techStack": "Stack utilizado",
+    "liveSite": "Acessar site",
+    "sourceCode": "Código-fonte",
+    "viewScreenshot": "Ver captura de tela",
+    "viewScreenshots": "Ver {count} capturas de tela",
+    "viewScreenshotsAria": "Ver capturas de tela de {title}",
+    "close": "Fechar",
+    "previousImage": "Imagem anterior",
+    "nextImage": "Próxima imagem"
+  },
+  "resume": {
+    "metaTitle": "Currículo",
+    "downloadPdf": "Baixar PDF",
+    "experience": "Experiência",
+    "education": "Formação",
+    "languages": "Idiomas"
+  }
+}

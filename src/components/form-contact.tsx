@@ -10,24 +10,24 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { Textarea } from './ui/textarea'
 
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
-  }),
-  email: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-  message: z.string().min(2, {
-    message: 'Message must be at least 2 characters.',
-  }),
-})
+function useFormSchema() {
+  const t = useTranslations('form')
+  return z.object({
+    name: z.string().min(2, { message: t('nameError') }),
+    email: z.string().min(2, { message: t('emailError') }),
+    message: z.string().min(2, { message: t('messageError') }),
+  })
+}
 
 export default function FormContact() {
+  const t = useTranslations('form')
+  const formSchema = useFormSchema()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,11 +44,11 @@ export default function FormContact() {
       body: JSON.stringify(values),
     })
       .then(() => {
-        toast('Message sent successfully!', { type: 'success' } as any)
+        toast(t('success'), { type: 'success' } as any)
         form.reset()
       })
       .catch(() => {
-        toast('Something went wrong.', { type: 'error' } as any)
+        toast(t('error'), { type: 'error' } as any)
       })
   }
 
@@ -64,9 +64,9 @@ export default function FormContact() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t('nameLabel')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder={t('namePlaceholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -77,10 +77,10 @@ export default function FormContact() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t('emailLabel')}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="johndoe@acme.com"
+                    placeholder={t('emailPlaceholder')}
                     type="email"
                     {...field}
                   />
@@ -95,10 +95,10 @@ export default function FormContact() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{t('messageLabel')}</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Type your message here"
+                  placeholder={t('messagePlaceholder')}
                   rows={3}
                   {...field}
                 />
@@ -108,7 +108,7 @@ export default function FormContact() {
           )}
         />
         <Button type="submit" className="mx-auto">
-          Submit
+          {t('submit')}
         </Button>
       </form>
     </Form>

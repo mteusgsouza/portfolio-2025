@@ -4,26 +4,28 @@ import Social from '@/components/social';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import moment from 'moment';
+import { getTranslations } from 'next-intl/server';
 import { FiDownload } from 'react-icons/fi';
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations('home');
 
   return (
     <div className="h-full">
       <div className="container">
         <div className="flex flex-col xl:flex-row justify-between items-center xl:pt-8 xl:pb-20">
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className='text-xl'>Font-end Developer</span>
+            <span className='text-xl'>{t('role')}</span>
             <h1 className="h1 mb-6">
-              Hello, I'm <br /> <span className="text-accent">Mateus Souza</span>
+              {t('greeting')} <br /> <span className="text-accent">Mateus Souza</span>
             </h1>
             <p className="max-w-[31.25rem] mb-9 text-white/80">
-              I'm a front-end developer with {moment().diff(moment('2019-11-19'), 'years')} years of professional experience. I specialize in building websites and web applications with modern technologies like React, Next.js, and Tailwind CSS.
+              {t('intro', { years: moment().diff(moment('2019-11-19'), 'years') })}
             </p>
             <div className='flex flex-col xl:flex-row items-center gap-8'>
               <a href="/files/Curriculo Mateus Gonçalves de Souza.pdf" target='_blank' rel='noopener noreferrer' download>
                 <Button variant="outline" size="lg" className='uppercase flex items-center gap-2'>
-                  <span>Download CV</span>
+                  <span>{t('downloadCv')}</span>
                   <FiDownload className='text-xl' />
                 </Button>
               </a>
