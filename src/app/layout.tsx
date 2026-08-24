@@ -1,3 +1,4 @@
+import Footer from '@/components/footer'
 import Header from '@/components/header'
 import PageTransition from '@/components/page-transition'
 import StairTransition from '@/components/stair-transition'
@@ -43,6 +44,7 @@ export default function RootLayout({
           <Header />
           <StairTransition />
           <PageTransition>{children}</PageTransition>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>

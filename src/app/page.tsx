@@ -41,7 +41,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Skills />
+      <div className="xl:pb-20">
+        <Skills />
+      </div>
       {/* <Stats /> */}
       {/* <ModeToggle/> */}
     </div>
