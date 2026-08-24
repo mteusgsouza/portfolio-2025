@@ -109,8 +109,8 @@ export const projects: Project[] = [
         items: ['Server Actions', 'Prisma 6', 'PostgreSQL'],
       },
       {
-        label: 'Auth & Localization',
-        items: ['Clerk 7', '@clerk/localizations (pt-BR)'],
+        label: 'Auth',
+        items: ['Clerk 7'],
       },
       {
         label: 'Infra',
