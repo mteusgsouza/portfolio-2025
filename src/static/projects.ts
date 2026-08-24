@@ -81,19 +81,41 @@ export const projects: Project[] = [
     category: 'PWA',
     title: 'Projeto Fitness',
     description:
-      'Mobile-first PWA for tracking gym workouts. Each member keeps one workout sheet per weekday, adjusts it as the training evolves, and compares load, repetitions and difficulty across sessions, with frequency and progress charts on the home screen.',
+      'Mobile-first PWA for gym workouts: mount workout sheets (one per weekday), log what was actually executed (load, reps, RPE) series by series, and track progression over time with charts for frequency and per-exercise evolution.',
     highlights: [
-      'Installable mobile-first PWA, designed to be used on the phone during the workout itself rather than filled in afterwards.',
-      'One workout sheet per weekday, edited over time so the routine evolves alongside the training instead of being rebuilt from scratch.',
-      'Per-exercise progression tracking: load, repetitions and perceived difficulty are recorded every session and compared against the previous ones.',
-      'Home dashboard with frequency and progress charts built from the session history.',
-      'Authentication and route protection with Clerk — every application route is gated by middleware, with sign-in and sign-up as the only public entry points.',
+      '88 pre-seeded exercises across 10 muscle groups with descriptions and difficulty levels; global catalog stays intact when users modify their prescriptions, preserving exercise history.',
+      'One training sheet per weekday enforced by database constraint; edit the prescription, add or swap exercises, and the app keeps the execution history separate and unchanged.',
+      'Per-series logging during workout: load, reps, and RPE independently per set, with fields pre-filled from the last session or the target prescription — the plan is a guideline, not a lock.',
+      'Mobile-first UI with 44px touch targets, bottom navigation bar on mobile / top bar on desktop, selectors as bottom sheets on mobile / modals on desktop, and light/dark theme with emerald palette.',
+      'Workout history by session and per-exercise graphs: frequency in the last 12 weeks (every week shown, so zero weeks are visible) and absolute progression since first record — kg for loaded exercises, reps for bodyweight.',
+      'Retroactive session logging with editable date, time and notes; the app suggests updating the prescription if execution diverges from the target.',
     ],
-    // TODO: add database, ORM and charting library once confirmed.
     stack: [
-      { label: 'Front', items: ['Next.js', 'React', 'PWA'] },
-      { label: 'Auth', items: ['Clerk'] },
-      { label: 'Infra', items: ['Vercel'] },
+      {
+        label: 'Front',
+        items: [
+          'Next.js 16',
+          'React 19',
+          'TypeScript 5',
+          'Tailwind CSS 4',
+          'shadcn/ui',
+          'Recharts',
+          'React Hook Form',
+          'Zod',
+        ],
+      },
+      {
+        label: 'Back',
+        items: ['Server Actions', 'Prisma 6', 'PostgreSQL'],
+      },
+      {
+        label: 'Auth & Localization',
+        items: ['Clerk 7', '@clerk/localizations (pt-BR)'],
+      },
+      {
+        label: 'Infra',
+        items: ['Vercel', 'Neon (PostgreSQL)'],
+      },
     ],
     // image: '/assets/work/projeto-fitness.png',
     live: 'https://projeto-fitness-five.vercel.app/sign-in',
