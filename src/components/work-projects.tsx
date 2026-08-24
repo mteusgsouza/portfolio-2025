@@ -6,27 +6,51 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
+import { ProjectLightbox } from '@/components/project-lightbox'
 import { projects, type Project } from '@/static/projects'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { BsArrowUpRight, BsCheck2, BsGithub } from 'react-icons/bs'
+import { BsArrowUpRight, BsCheck2, BsGithub, BsZoomIn } from 'react-icons/bs'
 
 function ProjectPreview({ project }: { project: Project }) {
   const [showImage, setShowImage] = useState(Boolean(project.image))
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const gallery = project.images?.length
+    ? project.images
+    : project.image
+      ? [project.image]
+      : []
 
   return (
     <div className="relative aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/[0.02]">
       {showImage && project.image ? (
-        <Image
-          src={project.image}
-          alt={`${project.title} preview`}
-          fill
-          sizes="(min-width: 1280px) 40vw, 100vw"
-          onError={() => setShowImage(false)}
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-        />
+        <button
+          type="button"
+          onClick={() => {
+            setActiveIndex(0)
+            setLightboxOpen(true)
+          }}
+          className="group/preview relative block h-full w-full cursor-zoom-in"
+          aria-label={`View ${project.title} screenshots`}
+        >
+          <Image
+            src={project.image}
+            alt={`${project.title} preview`}
+            fill
+            sizes="(min-width: 1280px) 40vw, 100vw"
+            onError={() => setShowImage(false)}
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover/preview:bg-black/40 group-hover/preview:opacity-100">
+            <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
+              <BsZoomIn className="text-base" />
+              {gallery.length > 1 ? `View ${gallery.length} screenshots` : 'View screenshot'}
+            </span>
+          </div>
+        </button>
       ) : (
         <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-white/[0.06] to-transparent">
           <span className="text-outline group-hover:text-outline-hover text-6xl font-extrabold text-transparent transition-all duration-500 xl:text-8xl">
@@ -37,6 +61,17 @@ function ProjectPreview({ project }: { project: Project }) {
       <span className="bg-primary/80 text-accent absolute top-4 left-4 rounded-full border border-white/10 px-3 py-1 text-xs tracking-[0.125rem] uppercase backdrop-blur-sm">
         {project.category}
       </span>
+
+      {gallery.length > 0 && (
+        <ProjectLightbox
+          images={gallery}
+          alt={project.title}
+          index={activeIndex}
+          onIndexChange={setActiveIndex}
+          open={lightboxOpen}
+          onOpenChange={setLightboxOpen}
+        />
+      )}
     </div>
   )
 }

@@ -11,8 +11,10 @@ export type Project = {
   /** Architecture and engineering decisions, listed inside the card accordion. */
   highlights: string[]
   stack: StackGroup[]
-  /** Screenshot under `public/assets/work/`. Without it the card shows a placeholder. */
+  /** Cover screenshot under `public/assets/work/`. Without it the card shows a placeholder. */
   image?: string
+  /** Extra screenshots for the gallery viewer. Defaults to just `image` when omitted. */
+  images?: string[]
   live?: string
   github?: string
 }
@@ -71,8 +73,15 @@ export const projects: Project[] = [
         ],
       },
     ],
-    // Drop the screenshot in public/assets/work/ and uncomment:
-    // image: '/assets/work/uai-economizei.png',
+    image: '/assets/work/uai-economizei/01-home.png',
+    images: [
+      '/assets/work/uai-economizei/01-home.png',
+      '/assets/work/uai-economizei/04-carrinho-produtos.png',
+      '/assets/work/uai-economizei/05-meus-pedidos.png',
+      '/assets/work/uai-economizei/06-minha-conta.png',
+      '/assets/work/uai-economizei/02-dashboard-home.png',
+      '/assets/work/uai-economizei/03-dashboard-produto.png',
+    ],
     live: 'https://uai-economizei-monorepo-front.vercel.app/',
     github: 'https://github.com/mteusgsouza/uai-economizei-monorepo',
   },
@@ -117,7 +126,13 @@ export const projects: Project[] = [
         items: ['Vercel', 'Neon (PostgreSQL)'],
       },
     ],
-    // image: '/assets/work/projeto-fitness.png',
+    image: '/assets/work/projeto-fitness/01-home.png',
+    images: [
+      '/assets/work/projeto-fitness/01-home.png',
+      '/assets/work/projeto-fitness/02-executando-treinamento.png',
+      '/assets/work/projeto-fitness/03-historico-treino.png',
+      '/assets/work/projeto-fitness/04-perfil.png',
+    ],
     live: 'https://projeto-fitness-five.vercel.app/sign-in',
     github: 'https://github.com/mteusgsouza/projeto-fitness',
   },
