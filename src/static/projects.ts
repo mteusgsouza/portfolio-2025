@@ -27,7 +27,10 @@ export type Project = {
 
 export type LocalizedProject = Project & ProjectTranslation
 
-export function localizeProject(project: Project, locale: Locale): LocalizedProject {
+export function localizeProject(
+  project: Project,
+  locale: Locale
+): LocalizedProject {
   return { ...project, ...project.translations[locale] }
 }
 
@@ -142,6 +145,8 @@ export const projects: Project[] = [
           'Tailwind CSS 4',
           'shadcn/ui',
           'Recharts',
+          'dnd-kit',
+          'Vaul',
           'React Hook Form',
           'Zod',
         ],
@@ -172,40 +177,43 @@ export const projects: Project[] = [
       en: {
         category: 'PWA',
         description:
-          'Mobile-first PWA for gym workouts: mount workout sheets (one per weekday), log what was actually executed (load, reps, RPE) series by series, and track progression over time with charts for frequency and per-exercise evolution.',
+          'Mobile-first PWA for gym workouts: build training sheets (one per weekday), log every set as it happens — load, reps or duration, RPE — and track progression over time with frequency and per-exercise charts.',
         highlights: [
-          '88 pre-seeded exercises across 10 muscle groups with descriptions and difficulty levels; global catalog stays intact when users modify their prescriptions, preserving exercise history.',
-          'One training sheet per weekday enforced by database constraint; edit the prescription, add or swap exercises, and the app keeps the execution history separate and unchanged.',
-          'Per-series logging during workout: load, reps, and RPE independently per set, with fields pre-filled from the last session or the target prescription — the plan is a guideline, not a lock.',
-          'Mobile-first UI with 44px touch targets, bottom navigation bar on mobile / top bar on desktop, selectors as bottom sheets on mobile / modals on desktop, and light/dark theme with emerald palette.',
-          'Workout history by session and per-exercise graphs: frequency in the last 12 weeks (every week shown, so zero weeks are visible) and absolute progression since first record — kg for loaded exercises, reps for bodyweight.',
-          'Retroactive session logging with editable date, time and notes; the app suggests updating the prescription if execution diverges from the target.',
+          'Catalog of 88 pre-seeded exercises across 10 muscle groups; each exercise defines its own tracking unit (reps or duration), with optional distance in km for treadmill, bike, elliptical and rowing — the global catalog and exercise history stay intact when prescriptions are edited.',
+          'One training sheet per weekday enforced by a database constraint, with drag-and-drop reordering (dnd-kit) both when building the sheet and during the workout itself, including full keyboard support — focus the handle, space to lift, arrow keys to move.',
+          "Per-set logging during workout: load, the exercise's own unit (reps, duration or distance) and RPE independently per set, pre-filled from the last session or the prescription — the plan is a guideline, not a lock.",
+          'Only checked exercises are saved: each one collapses and expands, the header shows live progress ("3 of 6 exercises"), and a confirmation dialog lists what will be left out before saving.',
+          'History with average RPE per session, and a full progression curve per exercise reachable from the sheet, the session detail, or the catalog — kg for loaded exercises, reps for bodyweight, time for cardio and isometrics.',
+          'Profile dashboard with a 12-week frequency chart (zero-training weeks shown, not hidden) and total time training counted from the first logged session ("14 days", "5 months", "1 year and 4 months").',
+          'Mobile-first UI with 44px touch targets, bottom-sheet/dialog selectors, light/dark theme with a choice of 5 accent colors applied via a pre-hydration script to avoid flashing, and loading skeletons on database-backed routes.',
         ],
       },
       pt: {
         category: 'PWA',
         description:
-          'PWA mobile-first para treinos de academia: monte fichas de treino (uma por dia da semana), registre o que foi realmente executado (carga, repetições, RPE) série por série, e acompanhe a evolução ao longo do tempo com gráficos de frequência e progresso por exercício.',
+          'PWA mobile-first para treinos de academia: monte fichas de treino (uma por dia da semana), registre cada série como ela acontece — carga, repetições ou tempo, RPE — e acompanhe a evolução ao longo do tempo com gráficos de frequência e progresso por exercício.',
         highlights: [
-          '88 exercícios pré-cadastrados em 10 grupos musculares, com descrições e níveis de dificuldade; o catálogo global permanece intacto quando os usuários modificam suas prescrições, preservando o histórico dos exercícios.',
-          'Uma ficha de treino por dia da semana, garantida por constraint no banco de dados; ao editar a prescrição, adicionar ou trocar exercícios, o app mantém o histórico de execução separado e inalterado.',
-          'Registro por série durante o treino: carga, repetições e RPE de forma independente por set, com campos pré-preenchidos a partir da última sessão ou da prescrição alvo — o plano é uma referência, não uma trava.',
-          'UI mobile-first com áreas de toque de 44px, barra de navegação inferior no mobile / superior no desktop, seletores como bottom sheets no mobile / modais no desktop, e tema claro/escuro com paleta esmeralda.',
-          'Histórico de treinos por sessão e gráficos por exercício: frequência nas últimas 12 semanas (todas as semanas são exibidas, inclusive as com zero treinos) e progressão absoluta desde o primeiro registro — kg para exercícios com carga, repetições para exercícios de peso corporal.',
-          'Registro retroativo de sessões com data, horário e notas editáveis; o app sugere atualizar a prescrição quando a execução diverge do alvo.',
+          'Catálogo com 88 exercícios pré-cadastrados em 10 grupos musculares; cada exercício define sua própria unidade de medida (repetições ou tempo), com distância opcional em km para esteira, bike, elíptico e remo — o catálogo global e o histórico permanecem intactos ao editar prescrições.',
+          'Uma ficha por dia da semana, garantida por constraint no banco; reordenação por arrastar e soltar (dnd-kit) tanto na montagem da ficha quanto durante a execução do treino, com suporte completo a teclado — foco na alça, espaço para levantar, setas para mover.',
+          'Registro por série durante o treino: carga, a medida do exercício (repetições, tempo ou distância) e RPE de forma independente por set, pré-preenchidos a partir da última sessão ou da prescrição — o plano é referência, não trava.',
+          'Só o que for marcado como feito entra na sessão: os exercícios recolhem e expandem, o cabeçalho mostra o progresso ("3 de 6 exercícios") e um diálogo lista o que ficará de fora antes de gravar.',
+          'Histórico com esforço médio (RPE) por sessão, e curva de progressão por exercício acessível pela ficha, pelo detalhe da sessão ou pelo catálogo — kg para exercícios com carga, repetições para peso corporal, tempo para cardio e isometria.',
+          'Perfil com frequência das últimas 12 semanas (semanas sem treino aparecem como zero) e tempo de treino contado desde o primeiro registro ("14 dias", "5 meses", "1 ano e 4 meses").',
+          'UI mobile-first com áreas de toque de 44px, seletores em bottom sheet/modal, tema claro/escuro com cor de destaque à escolha entre 5 opções (aplicada antes da hidratação, sem piscar), e skeletons de carregamento nas rotas que consultam o banco.',
         ],
       },
       ja: {
         category: 'PWA',
         description:
-          'ジムトレーニング向けのモバイルファーストPWA。曜日ごとのトレーニングシートを作成し、実際に行ったセットごとの負荷・回数・RPEを記録。頻度と種目別の進捗をグラフで長期的に確認できます。',
+          'ジムトレーニング向けのモバイルファーストPWA。曜日ごとのトレーニングシートを作成し、負荷・回数（または時間）・RPEをセットごとにその場で記録。頻度と種目別の進捗をグラフで長期的に確認できます。',
         highlights: [
-          '10の筋群にわたる88種類の事前登録済みエクササイズ(説明・難易度付き)。ユーザーが処方を変更してもグローバルカタログは影響を受けず、エクササイズ履歴が保持されます。',
-          '曜日ごとに1つのトレーニングシートをデータベース制約で保証。処方を編集したり種目を追加・変更しても、実行履歴は分離されたまま変更されません。',
-          'トレーニング中はセットごとに負荷・回数・RPEを個別に記録。前回のセッションまたは目標処方から自動入力されるため入力の手間が少なく、プランはあくまで目安として柔軟に扱えます。',
-          '44pxのタッチターゲットを備えたモバイルファーストUI。モバイルでは下部ナビゲーション、デスクトップでは上部バー、選択UIはモバイルでボトムシート/デスクトップでモーダルに切り替え。エメラルドカラーのライト/ダークテーマにも対応。',
-          'セッション別のトレーニング履歴と種目別グラフを提供。直近12週間の頻度(トレーニングが0の週も含めて全て表示)と、初回記録からの絶対的な進捗(負荷種目はkg、自重種目は回数)を確認可能。',
-          '日時やメモを編集できる遡及的なセッション記録に対応。実行内容が目標処方と乖離した場合はプランの更新を提案します。',
+          '10の筋群にわたる88種目の事前登録カタログ。種目ごとに測定単位（回数/時間）を保持し、有酸素マシン（トレッドミル・バイク・エリプティカル・ローイング）ではオプションで距離（km）も記録。処方を変更してもグローバルカタログとエクササイズ履歴は影響を受けません。',
+          '曜日ごとに1つのトレーニングシート（データベース制約で保証）。dnd-kitによるドラッグ＆ドロップで種目を並べ替え可能。シート作成画面だけでなく実行中のワークアウト画面でも対応し、ハンドルへのフォーカス・スペースキーでの選択・矢印キーでの移動というキーボード操作にも対応。',
+          'セットごとの記録：負荷・種目固有の単位（回数・時間・距離）・RPEを個別に入力。前回セッションまたは目標処方から自動入力され、プランはあくまで目安として柔軟に扱えます。',
+          'チェックした種目だけがセッションとして保存される仕組み。各種目は折りたたみ可能で、ヘッダーに「6種目中3種目完了」の進捗バーを表示。保存前には除外される種目を一覧するダイアログが確認を促します。',
+          'セッション別履歴に平均RPEを表示し、種目ごとの進捗カーブはシート・セッション詳細・カタログのいずれからも参照可能。記録単位は負荷種目でkg、自重種目で回数、有酸素・アイソメトリックで時間。',
+          'プロフィール画面では直近12週間の頻度グラフ（トレーニングが0の週も表示）と、初回記録からのトレーニング継続期間（「14日」「5か月」「1年4か月」など）を表示。',
+          'モバイルファーストUI：44pxのタッチターゲット、ボトムシート/モーダルの選択UI、ライト/ダークテーマに加え5色から選べるアクセントカラー（ハイドレーション前のスクリプトでちらつきを防止）、DBアクセスを伴うルートにはスケルトン表示。',
         ],
       },
     },
