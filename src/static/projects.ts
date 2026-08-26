@@ -171,7 +171,7 @@ export const projects: Project[] = [
       '/assets/work/projeto-fitness/03-historico-treino.png',
       '/assets/work/projeto-fitness/04-perfil.png',
     ],
-    live: 'https://projeto-fitness-five.vercel.app/sign-in',
+    live: 'https://treino.mateusgsouza.com.br/sign-in',
     github: 'https://github.com/mteusgsouza/projeto-fitness',
     translations: {
       en: {
