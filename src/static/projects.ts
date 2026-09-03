@@ -218,6 +218,103 @@ export const projects: Project[] = [
       },
     },
   },
+  {
+    num: '03',
+    title: 'Bubble',
+    stack: [
+      {
+        label: 'Front',
+        items: [
+          'One 1.14',
+          'Tamagui 2',
+          'React 19',
+          'React Native 0.83',
+          'Expo 55',
+          'TypeScript 5',
+        ],
+      },
+      {
+        label: 'Dados',
+        items: [
+          'Zero 0.26 (Rocicorp)',
+          'Drizzle ORM',
+          'PostgreSQL 16',
+          'Valibot',
+        ],
+      },
+      {
+        label: 'Auth & Mídia',
+        items: ['Better Auth 1.3', 'Cloudflare R2'],
+      },
+      {
+        label: 'Infra',
+        items: ['Bun 1.3', 'Docker', 'Caddy', 'AWS Lightsail', 'Neon', 'EAS'],
+      },
+      {
+        label: 'Testes',
+        items: ['Vitest', 'Playwright'],
+      },
+    ],
+    image: '/assets/work/bubble/02-feed-mobile.png',
+    images: [
+      '/assets/work/bubble/07-login.png',
+      '/assets/work/bubble/01-feed-web.png',
+      '/assets/work/bubble/02-feed-mobile.png',
+      '/assets/work/bubble/03-curso.png',
+      '/assets/work/bubble/04-post-comentarios.png',
+      '/assets/work/bubble/05-admin-visao-geral.png',
+      '/assets/work/bubble/06-admin-editar-post.png',
+    ],
+    live: 'https://bubble.mateusgsouza.com.br',
+    github: 'https://github.com/mteusgsouza/tamagui-bubble-app',
+    translations: {
+      en: {
+        category: 'Cross-platform app',
+        description:
+          'Subscription content platform for a single creator: a feed with text, photo, video and audio, courses split into modules and lessons, content either open or locked behind a subscription, and a web admin to publish all of it. Web, iOS and Android from one codebase.',
+        highlights: [
+          'One codebase for web, iOS and Android: One handles file-based routing and API routes across all three targets, and Tamagui compiles the same component to the DOM and to React Native, with real themes and tokens.',
+          'Reactive sync through Zero (Rocicorp): every mutation runs twice — optimistically on the client and authoritatively on the server — so newId() and Date.now() are computed in the screen, never inside the mutation, or the two sides would diverge.',
+          'The paywall is a server-side join, not a JWT claim: each piece of content is public or subscribers, and may additionally require a specific plan; read permissions run on the server and the client never receives a row that fails the gate.',
+          'Feed with text, photo, video and audio — a carousel of up to 9 photos, a custom player (web and native) with poster, likes, comments and replies, and denormalized counters kept in sync by the mutations themselves.',
+          'Courses as course → modules → lessons, with per-lesson progress that resumes where you stopped, completes itself at the end, and a free-preview flag to open a single lesson inside a paid course.',
+          'Plans and subscriptions with a billing adapter, an HMAC-signed webhook, a checkout route and an expiration job; a plan is never deleted, only taken off sale, because old posts still reference it and subscriptions were already sold against it.',
+          'Media uploaded straight from the browser or app to Cloudflare R2 through a signed URL — no byte crosses the app server; reads are a 302 with the subscription gate re-checked before signing, with per-type limits (photo 25 MB, audio 200 MB, video 1 GB) and a signature TTL of 5 minutes for images and 4 hours for video and audio.',
+          'Web admin with two permission levels: content management for the creator, and a People and Plans area restricted to admins — the one area that does not use Zero, because payments live in a private table. In production the app server and zero-cache sit on AWS Lightsail behind Caddy, Postgres 16 runs on Neon (logical replication is what feeds zero-cache) and media lives on R2, covered by 94 unit tests in Vitest and 15 integration tests in Playwright.',
+        ],
+      },
+      pt: {
+        category: 'App multiplataforma',
+        description:
+          'Plataforma de conteúdo por assinatura, de um criador só: feed com texto, foto, vídeo e áudio, cursos com módulos e aulas, conteúdo aberto ou trancado para assinantes, e um admin web para publicar tudo isso. Web, iOS e Android com um código só.',
+        highlights: [
+          'Um código só para web, iOS e Android: o One cuida das rotas por arquivo e das API routes nas três plataformas, e o Tamagui compila o mesmo componente para o DOM e para o React Native, com tema e tokens de verdade.',
+          'Sincronização reativa com Zero (Rocicorp): cada mutation roda duas vezes — otimista no cliente e autoritativa no servidor —, então newId() e Date.now() saem da tela, nunca de dentro da mutation, senão os dois lados divergem.',
+          'O paywall é join no servidor, não claim de JWT: cada peça de conteúdo é pública ou de assinantes e ainda pode exigir um plano específico; as permissões de leitura rodam server-side e o cliente nunca recebe a linha que não passa pelo gate.',
+          'Feed com texto, foto, vídeo e áudio — carrossel de até 9 fotos, player próprio (web e nativo) com poster, curtidas, comentários e respostas, e contadores desnormalizados mantidos pelas próprias mutations.',
+          'Cursos em curso → módulos → aulas, com progresso por aula que retoma de onde parou, conclui sozinho no fim, e amostra grátis para liberar uma aula dentro de um curso pago.',
+          'Planos e assinaturas com adapter de cobrança, webhook assinado com HMAC, rota de checkout e job de expiração; plano nunca é apagado, só sai de venda, porque ainda é referência de posts antigos e de assinaturas já vendidas.',
+          'Mídia enviada direto do navegador ou do app para o Cloudflare R2 com URL assinada — nenhum byte atravessa o servidor da aplicação; a leitura é um 302 com o gate de assinatura refeito antes de assinar, com limites por tipo (foto 25 MB, áudio 200 MB, vídeo 1 GB) e TTL de 5 minutos para imagem e 4 horas para vídeo e áudio.',
+          'Admin web com dois níveis de permissão: gestão de conteúdo para o criador, e a área de Pessoas e Planos restrita a administradores — a única que não usa Zero, porque pagamento é tabela privada. Em produção, o app server e o zero-cache ficam numa AWS Lightsail atrás de um Caddy, o Postgres 16 roda no Neon (a replicação lógica é o que alimenta o zero-cache) e a mídia vive no R2, com 94 testes unitários em Vitest e 15 de integração em Playwright.',
+        ],
+      },
+      ja: {
+        category: 'クロスプラットフォームアプリ',
+        description:
+          'クリエイター1人のためのサブスクリプション型コンテンツ配信プラットフォーム。テキスト・写真・動画・音声のフィード、モジュールとレッスンで構成される講座、公開または購読者限定のコンテンツ、そしてそれらを投稿するWeb管理画面。Web・iOS・Androidを単一のコードベースで実装。',
+        highlights: [
+          'Web・iOS・Androidを単一コードベースで実装。Oneが3プラットフォーム共通のファイルベースルーティングとAPIルートを担い、Tamaguiが同じコンポーネントをDOMとReact Nativeの両方へコンパイル。テーマとトークンは本物のまま扱えます。',
+          'Zero（Rocicorp）によるリアクティブ同期。ミューテーションはクライアント側で楽観的に、サーバー側で確定的にと2回実行されるため、newId()やDate.now()はミューテーション内ではなく画面側で生成します。そうしないと両者の値がずれてデータが乖離します。',
+          'ペイウォールはJWTのクレームではなくサーバー側のJOINで解決。各コンテンツは公開または購読者限定で、さらに特定プランを要求することも可能。読み取り権限はサーバーで評価され、ゲートを通らない行はクライアントに一切届きません。',
+          'テキスト・写真・動画・音声のフィード。最大9枚の写真カルーセル、ポスター付きの自作プレイヤー（Web・ネイティブ共通）、いいね・コメント・返信を備え、非正規化カウンターはミューテーション自身が更新します。',
+          '講座 → モジュール → レッスンの構成。レッスン単位の進捗は中断地点から再開でき、最後まで再生すると自動的に完了。無料プレビュー指定により、有料講座内の1レッスンだけを開放できます。',
+          'プランとサブスクリプションは課金アダプター、HMAC署名付きWebhook、チェックアウトのルート、期限切れジョブで構成。プランは削除されず販売停止になるだけです — 過去の投稿から参照され、販売済みのサブスクリプションからも参照されているためです。',
+          'メディアは署名付きURLでブラウザ／アプリからCloudflare R2へ直接アップロードし、アプリサーバーを1バイトも経由しません。読み取りは302リダイレクトで、署名の直前にサブスクリプションのゲートを再評価。種別ごとの上限（写真25MB・音声200MB・動画1GB）と、画像5分・動画/音声4時間の署名TTLを設定しています。',
+          'Web管理画面は2段階の権限：コンテンツ管理はクリエイター向け、「ユーザー」と「プラン」は管理者限定です。後者は決済が非公開テーブルのため、唯一Zeroを使わない領域です。本番環境ではアプリサーバーとzero-cacheをCaddy越しのAWS Lightsailに、Postgres 16をNeonに（論理レプリケーションがzero-cacheを駆動）、メディアをR2に配置。Vitestの単体テスト94件とPlaywrightの統合テスト15件で担保しています。',
+        ],
+      },
+    },
+  },
   // Next projects: copy the block above, bump `num` and adjust the fields.
   // `image`, `live` and `github` are optional.
 ]
