@@ -19,8 +19,8 @@ async function Footer() {
               <a href="mailto:mteus.g.souza@gmail.com" className="block hover:text-accent transition-colors">
                 mteus.g.souza@gmail.com
               </a>
-              <a href="https://wa.me/55319971278536" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">
-                +55 (31) 9 97127-8536
+              <a href="https://wa.me/5531971278536" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">
+                +55 (31) 9 7127-8536
               </a>
             </p>
           </div>

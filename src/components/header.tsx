@@ -16,7 +16,7 @@ async function Header() {
         <div className='hidden items-center gap-8 xl:flex'>
           <Nav />
           <a
-            href="https://wa.me/55319971278536?text=Ol%C3%A1!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade."
+            href="https://wa.me/5531971278536?text=Ol%C3%A1!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade."
             target='_blank'
             rel='noopener noreferrer'
           >

@@ -32,10 +32,10 @@ async function ContatPage() {
           <p className="text-center text-white/80">
             {t('viaPhone')}{' '}
             <a
-              href="https://wa.me/55319971278536?text=Hi%20let%27s%20call%21"
+              href="https://wa.me/5531971278536?text=Hi%20let%27s%20call%21"
               className="text-accent whitespace-nowrap hover:underline"
             >
-              +55 (31) 9 97127-8536
+              +55 (31) 9 7127-8536
             </a>
           </p>
         </div>
