@@ -4,25 +4,20 @@ import { useTranslations } from 'next-intl'
 import { Badge } from './ui/badge'
 
 export const skillsData = [
-  'HTML',
-  'CSS',
-  'PHP',
-  'Git',
-  'JavaScript',
   'TypeScript',
   'React',
   'Next.js',
-  'Node.js',
-  'Expo',
   'React Native',
-  'Tailwind',
-  'Material-UI',
-  'Bootstrap',
-  'WordPress',
+  'Expo',
+  'Tailwind CSS',
+  'shadcn/ui',
+  'Node.js',
+  'NestJS',
   'Prisma',
-  'Redux',
-  'Express',
-  'Framer Motion',
+  'PostgreSQL',
+  'Zod',
+  'Playwright',
+  'Docker',
 ] as const
 
 
