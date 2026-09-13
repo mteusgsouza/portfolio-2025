@@ -20,6 +20,8 @@ export type Project = {
   image?: string
   /** Extra screenshots for the gallery viewer. Defaults to just `image` when omitted. */
   images?: string[]
+  /** Client or employer this was built for. Omitted means a personal project built end to end. */
+  company?: string
   live?: string
   github?: string
   translations: Record<Locale, ProjectTranslation>

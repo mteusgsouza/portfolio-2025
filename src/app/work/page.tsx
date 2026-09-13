@@ -1,3 +1,4 @@
+import ClientProjects from '@/components/client-projects'
 import WorkProjects from '@/components/work-projects'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
@@ -19,7 +20,21 @@ async function WorkPage() {
         <p className="mx-auto mb-12 max-w-2xl text-center text-white/80">
           {t('subtitle')}
         </p>
+
+        <h2 className="mb-2 text-xl font-semibold">{t('personalTitle')}</h2>
+        <p className="mb-8 max-w-3xl text-sm leading-relaxed text-white/60">
+          {t('personalIntro')}
+        </p>
         <WorkProjects />
+
+        <div className="mt-20 mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h2 className="text-xl font-semibold">{t('clientTitle')}</h2>
+          <span className="text-sm text-white/50">{t('clientPeriod')}</span>
+        </div>
+        <p className="mb-8 max-w-3xl text-sm leading-relaxed text-white/60">
+          {t('clientIntro')}
+        </p>
+        <ClientProjects />
       </div>
     </section>
   )

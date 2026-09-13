@@ -8,7 +8,11 @@ import {
 import { Badge } from '@/components/ui/badge'
 import { ProjectLightbox } from '@/components/project-lightbox'
 import type { Locale } from '@/i18n/locale'
-import { localizeProject, projects, type LocalizedProject } from '@/static/projects'
+import {
+  localizeProject,
+  projects,
+  type LocalizedProject,
+} from '@/static/projects'
 import { motion } from 'framer-motion'
 import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -63,9 +67,14 @@ function ProjectPreview({ project }: { project: LocalizedProject }) {
           </span>
         </div>
       )}
-      <span className="bg-primary/80 text-accent absolute top-4 left-4 rounded-full border border-white/10 px-3 py-1 text-xs tracking-[0.125rem] uppercase backdrop-blur-sm">
-        {project.category}
-      </span>
+      <div className="pointer-events-none absolute inset-x-4 top-4 flex flex-wrap items-start justify-between gap-2">
+        <span className="bg-primary/80 text-accent rounded-full border border-white/10 px-3 py-1 text-xs tracking-[0.125rem] uppercase backdrop-blur-sm">
+          {project.category}
+        </span>
+        <span className="bg-primary/80 rounded-full border border-white/10 px-3 py-1 text-xs tracking-[0.125rem] text-white/70 uppercase backdrop-blur-sm">
+          {project.company ?? t('personalProject')}
+        </span>
+      </div>
 
       {gallery.length > 0 && (
         <ProjectLightbox
