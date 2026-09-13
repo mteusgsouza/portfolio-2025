@@ -20,11 +20,11 @@ function ClientCard({
   index: number
 }) {
   const t = useTranslations('work')
-  const { name, url, stack, rewrite, featured, description } = project
+  const { name, url, stack, tags, featured, description } = project
 
   return (
     <motion.div
-      className={cn(featured && 'xl:col-span-3')}
+      className={cn(featured && 'sm:col-span-2 xl:col-span-3')}
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: 1,
@@ -51,8 +51,14 @@ function ClientCard({
           <span className="group-hover:text-accent pr-8 font-semibold transition-colors duration-300">
             {name}
           </span>
-          {/* Two lines are always reserved so every card keeps the same height. */}
-          <p className="mt-2 min-h-[3.25em] pr-8 text-sm leading-relaxed text-white/70">
+          {/* Two lines are reserved so every grid card keeps the same height;
+              the featured card drops it once it spans the full row. */}
+          <p
+            className={cn(
+              'mt-2 min-h-[3.25em] pr-8 text-sm leading-relaxed text-white/70',
+              featured && 'sm:min-h-0'
+            )}
+          >
             {description}
           </p>
         </div>
@@ -63,12 +69,19 @@ function ClientCard({
             featured && 'xl:shrink-0 xl:pt-0 xl:pr-8'
           )}
         >
-          <Badge className="bg-white/10 text-white/80">{stack}</Badge>
-          {rewrite && (
-            <Badge className="border-accent/30 bg-accent/15 text-accent">
-              {t('rewriteTag')}
+          {stack.map((tech) => (
+            <Badge key={tech} className="bg-white/10 text-white/80">
+              {tech}
             </Badge>
-          )}
+          ))}
+          {tags?.map((tag) => (
+            <Badge
+              key={tag}
+              className="border-accent/30 bg-accent/15 text-accent"
+            >
+              {t(`clientTags.${tag}`)}
+            </Badge>
+          ))}
         </div>
       </Link>
     </motion.div>

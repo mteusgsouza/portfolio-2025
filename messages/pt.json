@@ -53,8 +53,16 @@
     "personalProject": "Projeto pessoal",
     "clientTitle": "Trabalho na Bigmidia",
     "clientPeriod": "2019 – atual",
-    "clientIntro": "Sites institucionais de confederações e federações esportivas, desenvolvidos em equipe na Bigmidia. Os front ends são em React, a maioria em Next.js, consumindo a API do SGE, escrita em PHP com Yii2. Alguns, como o da CBDA, foram migrados do PHP legado e reescritos do zero. O código pertence à empresa, por isso não há repositório público.",
-    "rewriteTag": "Migrado do PHP",
+    "clientIntro": "Trabalho feito em equipe na Bigmidia. Os sites das confederações e federações esportivas consomem a API do SGE, escrita em PHP com Yii2, e alguns foram migrados do PHP legado e reescritos do zero. O código pertence à empresa, por isso não há repositório público.",
+    "clientTags": {
+      "rewrite": "Migrado do PHP",
+      "live": "Resultados ao vivo",
+      "liveScoreboard": "Placar ao vivo",
+      "multitenant": "Multitenant",
+      "customTemplate": "Template customizado",
+      "thirdPartyDesign": "Layout de terceiros",
+      "inherited": "Projeto herdado"
+    },
     "technicalHighlights": "Destaques técnicos",
     "techStack": "Stack utilizado",
     "liveSite": "Acessar site",

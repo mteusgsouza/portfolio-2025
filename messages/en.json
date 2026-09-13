@@ -53,8 +53,16 @@
     "personalProject": "Personal project",
     "clientTitle": "Work at Bigmidia",
     "clientPeriod": "2019 – present",
-    "clientIntro": "Institutional websites for Brazilian sports confederations and federations, built with the team at Bigmidia. The front ends are React, most of them Next.js, consuming the SGE API, written in PHP with Yii2. Some, such as CBDA, were migrated off the legacy PHP and rewritten from scratch. The code belongs to the company, so there is no public repository.",
-    "rewriteTag": "Migrated from PHP",
+    "clientIntro": "Work done with the team at Bigmidia. The confederation and federation websites consume the SGE API, written in PHP with Yii2, and some were migrated off the legacy PHP and rewritten from scratch. The code belongs to the company, so there is no public repository.",
+    "clientTags": {
+      "rewrite": "Migrated from PHP",
+      "live": "Live results",
+      "liveScoreboard": "Live scoreboard",
+      "multitenant": "Multitenant",
+      "customTemplate": "Customized template",
+      "thirdPartyDesign": "Third-party design",
+      "inherited": "Inherited project"
+    },
     "technicalHighlights": "Technical highlights",
     "techStack": "Tech stack",
     "liveSite": "Live site",

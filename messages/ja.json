@@ -53,8 +53,16 @@
     "personalProject": "個人プロジェクト",
     "clientTitle": "Bigmidiaでの業務",
     "clientPeriod": "2019年 – 現在",
-    "clientIntro": "Bigmidiaでチームとして開発した、ブラジルのスポーツ連盟・協会の公式サイトです。フロントエンドはReact（多くはNext.js）で、PHPのYii2で書かれたSGEのAPIを利用しています。CBDAのように、レガシーのPHPから全面的に書き直したサイトもあります。コードは会社に帰属するため、公開リポジトリはありません。",
-    "rewriteTag": "PHPから移行",
+    "clientIntro": "Bigmidiaでチームとして開発した仕事です。各連盟・協会のサイトは、PHPのYii2で書かれたSGEのAPIを利用しており、一部はレガシーのPHPから全面的に書き直しました。コードは会社に帰属するため、公開リポジトリはありません。",
+    "clientTags": {
+      "rewrite": "PHPから移行",
+      "live": "リアルタイム結果",
+      "liveScoreboard": "ライブスコアボード",
+      "multitenant": "マルチテナント",
+      "customTemplate": "テンプレートをカスタマイズ",
+      "thirdPartyDesign": "外部デザインを実装",
+      "inherited": "既存プロジェクトを引き継ぎ"
+    },
     "technicalHighlights": "技術的なポイント",
     "techStack": "使用技術",
     "liveSite": "サイトを見る",
